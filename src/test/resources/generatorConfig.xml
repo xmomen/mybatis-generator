@@ -2,7 +2,6 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-    <!--<classPathEntry location="C:\Users\Syah\.m2\repository\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar" />-->
     <classPathEntry location="E:\MavenRepositories\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar" />
     <context id="context1"
              targetRuntime="com.xmomen.maven.plugins.mybatis.generator.context.IntrospectedTableMyBatis3ImplExt">
@@ -17,23 +16,22 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.8.200:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8"
-                        userId="dev" password="dev" />
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="admin" password="admin" />
 
         <javaTypeResolver type="com.xmomen.maven.plugins.mybatis.generator.plugins.types.JavaTypeResolverDefaultImplExt"></javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.udfex.ucs.module.notification.entity"
+        <javaModelGenerator targetPackage="com.xmomen.demo.entity"
                             targetProject=".\src\test\java" >
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.udfex.ucs.module.notification.entity.mapper"
+        <sqlMapGenerator targetPackage="com.xmomen.demo.entity.mapper"
                          targetProject=".\src\test\resources" />
-        <javaClientGenerator targetPackage="com.udfex.ucs.module.notification.entity.mapper"
+        <javaClientGenerator targetPackage="com.xmomen.demo.entity.mapper"
                             targetProject=".\src\test\java" type="XMLMAPPER" >
         </javaClientGenerator>
-        <table tableName="t_message" />
-        <table tableName="t_message_type" />
-        <table tableName="t_system_message" />
+        <table tableName="t_department" />
+        <table tableName="t_employee" />
 
     </context>
 </generatorConfiguration>
