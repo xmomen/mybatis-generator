@@ -80,11 +80,11 @@ public class ModelAnnotationPlugin extends PluginAdapter {
      * @return
      */
     public boolean modelSetterMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, Plugin.ModelClassType modelClassType) {
-//        method.addBodyLine("if(" + introspectedColumn.getJavaProperty() + " == null){");
-//        method.addBodyLine("  removeValidField(\"" + introspectedColumn.getJavaProperty() + "\");");
-//        method.addBodyLine("  return;");
-//        method.addBodyLine("}");
-//        method.addBodyLine("addValidField(\""+introspectedColumn.getJavaProperty()+"\");");
+        method.addBodyLine("if(" + introspectedColumn.getJavaProperty() + " == null){");
+        method.addBodyLine("  removeValidField(\"" + introspectedColumn.getJavaProperty() + "\");");
+        method.addBodyLine("  return;");
+        method.addBodyLine("}");
+        method.addBodyLine("addValidField(\""+introspectedColumn.getJavaProperty()+"\");");
         return super.modelSetterMethodGenerated(method, topLevelClass, introspectedColumn, introspectedTable, modelClassType);
     }
 

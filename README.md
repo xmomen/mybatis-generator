@@ -13,6 +13,12 @@
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperSqlMapGeneratorPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.PrimaryKeyGeneratorPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperGeneratorPlugin">
+            <property name="rootInterface" value="com.xmomen.framework.mybatis.mapper.MybatisMapper"/>
+        </plugin>
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelExamplePlugin" >
+            <property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisExample" />
+        </plugin>
 
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
@@ -27,6 +33,7 @@
 
         <javaModelGenerator targetPackage="com.xmomen.demo.entity"
                             targetProject=".\src\test\java" >
+            <property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisModel" />
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="com.xmomen.demo.entity.mapper"
