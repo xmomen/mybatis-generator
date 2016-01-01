@@ -15,7 +15,7 @@ public class MapperGeneratorPlugin extends PluginAdapter {
     public boolean clientGenerated(Interface interfaze,
                                    TopLevelClass topLevelClass,
                                    IntrospectedTable introspectedTable) {
-        this.rootInterface = this.properties.getProperty("rootClass");
+        this.rootInterface = this.properties.getProperty("rootInterface");
         if(this.rootInterface != null){
             interfaze.addSuperInterface(new FullyQualifiedJavaType(this.rootInterface));
             interfaze.addImportedType(new FullyQualifiedJavaType(this.rootInterface));
