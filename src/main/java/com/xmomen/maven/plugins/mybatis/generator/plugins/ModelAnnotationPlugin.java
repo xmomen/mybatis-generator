@@ -26,25 +26,6 @@ public class ModelAnnotationPlugin extends PluginAdapter {
     }
 
     /**
-     * 添加数据库字段注释
-     * @param field
-     * @param topLevelClass
-     * @param introspectedColumn
-     * @param introspectedTable
-     * @param modelClassType
-     * @return
-     */
-    public boolean modelFieldGenerated(Field field,
-                                       TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn,
-                                       IntrospectedTable introspectedTable,
-                                       Plugin.ModelClassType modelClassType) {
-        field.addJavaDocLine("/**");
-        field.addJavaDocLine(" * " + introspectedColumn.getRemarks());
-        field.addJavaDocLine(" */");
-        return super.modelFieldGenerated(field, topLevelClass, introspectedColumn, introspectedTable, modelClassType);
-    }
-
-    /**
      * 添加Getter方法的注解
      * @param method
      * @param topLevelClass

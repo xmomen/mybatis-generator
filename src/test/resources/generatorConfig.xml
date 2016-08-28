@@ -2,19 +2,23 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-    <classPathEntry location="E:\MavenRepositories\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar" />
     <context id="context1"
              targetRuntime="com.xmomen.maven.plugins.mybatis.generator.context.IntrospectedTableMyBatis3ImplExt">
 
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperSqlMapGeneratorPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.PrimaryKeyGeneratorPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperGeneratorPlugin">
-            <property name="rootInterface" value="com.xmomen.framework.mybatis.mapper.MybatisMapper"/>
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />-->
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorControllerPlugin">
+            <property name="targetPackage" value="com/xmomen/demo/controller" />
+            <property name="targetProject" value="./src/test/java" />
         </plugin>
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelExamplePlugin" >
-            <property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisExample" />
-        </plugin>
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelCommentPlugin" />
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperSqlMapGeneratorPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.PrimaryKeyGeneratorPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperGeneratorPlugin">-->
+            <!--<property name="rootInterface" value="com.xmomen.framework.mybatis.mapper.MybatisMapper"/>-->
+        <!--</plugin>-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelExamplePlugin" >-->
+            <!--<property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisExample" />-->
+        <!--</plugin>-->
 
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
@@ -22,23 +26,22 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://192.168.99.100:3306/xmomen_dev?useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="admin" password="admin" />
 
         <javaTypeResolver type="com.xmomen.maven.plugins.mybatis.generator.plugins.types.JavaTypeResolverDefaultImplExt"></javaTypeResolver>
 
         <javaModelGenerator targetPackage="com.xmomen.demo.entity"
-                            targetProject=".\src\test\java" >
+                            targetProject="./src/test/java" >
             <property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisModel" />
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="com.xmomen.demo.entity.mapper"
-                         targetProject=".\src\test\resources" />
+                         targetProject="./src/test/resources" />
         <javaClientGenerator targetPackage="com.xmomen.demo.entity.mapper"
-                            targetProject=".\src\test\java" type="XMLMAPPER" >
+                            targetProject="./src/test/java" type="XMLMAPPER" >
         </javaClientGenerator>
-        <table tableName="t_department" />
-        <table tableName="t_employee" />
+        <table tableName="sys_users" domainObjectName="user_info" />
 
     </context>
 </generatorConfiguration>
