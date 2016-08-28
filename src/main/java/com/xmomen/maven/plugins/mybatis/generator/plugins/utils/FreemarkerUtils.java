@@ -1,12 +1,10 @@
 package com.xmomen.maven.plugins.mybatis.generator.plugins.utils;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
+import freemarker.template.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -14,13 +12,36 @@ import java.util.Map;
  */
 public class FreemarkerUtils {
 
-    public static Template getTemplate(String name) {
+    private static String DEFAULT_TEMPLATES = "/templates";
+    private static Configuration cfg = null;
+
+    private static Configuration getConfiguration() {
+        if (null == cfg) {
+            cfg = new Configuration();
+            // 这里有三种方式读取
+            // （一个文件目录）
+            // cfg.setDirectoryForTemplateLoading(new File("templates"));
+            // classpath下的一个目录（读取jar文件）
+            cfg.setClassForTemplateLoading(FreemarkerUtils.class, DEFAULT_TEMPLATES);
+            // 相对web的根路径来说 根目录
+            // cfg.setServletContextForTemplateLoading(ServletActionContext.getServletContext(), "templates");
+            // setEncoding这个方法一定要设置国家及其编码，不然在flt中的中文在生成html后会变成乱码
+            cfg.setEncoding(Locale.getDefault(), "UTF-8");
+            // 设置对象的包装器
+            cfg.setObjectWrapper(new DefaultObjectWrapper());
+            // 设置异常处理器//这样的话就可以${a.b.c.d}即使没有属性也不会出错
+            cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
+        }
+
+        return cfg;
+    }
+
+    public static Template getTemplate(String name, String ftlDirectory) {
         try {
             // 通过Freemaker的Configuration读取相应的ftl
-            Configuration cfg = new Configuration();
-            cfg.setDirectoryForTemplateLoading(new File("/Users/jeng/xmomen-repo/framework/mybatis-generator/src/main/resources/ftl"));
+            cfg = getConfiguration();
             // 设定去哪里读取相应的ftl模板文件
-            //cfg.setClassForTemplateLoading(getClass(), "/ftl");
+            cfg.setClassForTemplateLoading(FreemarkerUtils.class, ftlDirectory);
             // 在模板文件目录中找到名称为name的文件
             Template temp = cfg.getTemplate(name);
             return temp;
@@ -28,6 +49,10 @@ public class FreemarkerUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Template getTemplate(String name) {
+        return getTemplate(name, DEFAULT_TEMPLATES);
     }
 
     /**
@@ -38,7 +63,6 @@ public class FreemarkerUtils {
      */
     public static void print(String name, Map<String, Object> root) {
         try {
-            // 通过Template可以将模板文件输出到相应的流
             Template temp = getTemplate(name);
             temp.process(root, new PrintWriter(System.out));
         } catch (TemplateException e) {

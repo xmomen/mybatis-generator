@@ -21,4 +21,14 @@ public class PluginUtils {
         return primaryKeyIntrospectedColumn;
     }
 
+    public static String getUpperCaseString(String inputString) {
+        StringBuilder sb = new StringBuilder(inputString);
+
+        if (inputString != null && inputString.length() > 0) {
+            sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
+        }
+
+        return sb.toString();
+    }
+
 }
