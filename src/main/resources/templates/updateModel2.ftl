@@ -1,6 +1,8 @@
 package ${targetPackage};
 
 import lombok.Data;
+import ${modulePackage}.entity.${domainObjectClassName};
+import org.springframework.beans.BeanUtils;
 
 <#if columnImports?exists>
     <#list columnImports?keys as mykey>
@@ -20,4 +22,10 @@ public @Data class Update${domainObjectClassName} implements Serializable {
     </#list>
 </#if>
 
+
+    public ${domainObjectClassName} getEntity(){
+        ${domainObjectClassName} ${domainObjectName} = new ${domainObjectClassName}();
+        BeanUtils.copyProperties(this, ${domainObjectName});
+        return ${domainObjectName};
+    }
 }
