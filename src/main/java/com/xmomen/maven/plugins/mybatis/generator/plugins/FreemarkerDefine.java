@@ -9,6 +9,8 @@ public class FreemarkerDefine {
     public static String CONTROLLER_TEMPLATE= "controller" + PREFIX;
     public static String SERVICE_TEMPLATE= "service" + PREFIX;
     public static String SERVICE_IMPL_TEMPLATE= "serviceImpl" + PREFIX;
+    public static String MAPPER_TEMPLATE= "mapper" + PREFIX;
+    public static String MAPPER_XML_TEMPLATE= "mapper-xml" + PREFIX;
     public static String MODEL_TEMPLATE= "model" + PREFIX;
     public static String CREATE_MODEL_TEMPLATE= "createModel" + PREFIX;
     public static String QUERY_MODEL_TEMPLATE= "queryModel" + PREFIX;

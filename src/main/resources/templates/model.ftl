@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * Created by Jeng on ${.now}.
  */
-public @Data class ${DomainObjectName}Model implements Serializable {
+public @Data class ${domainObjectClassName}Model implements Serializable {
 
 <#if columnList?exists>
     <#list columnList as column>

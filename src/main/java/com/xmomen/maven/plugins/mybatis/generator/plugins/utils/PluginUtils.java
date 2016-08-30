@@ -31,4 +31,14 @@ public class PluginUtils {
         return sb.toString();
     }
 
+    public static String getLowerCaseString(String inputString) {
+        StringBuilder sb = new StringBuilder(inputString);
+
+        if (inputString != null && inputString.length() > 0) {
+            sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
+        }
+
+        return sb.toString();
+    }
+
 }

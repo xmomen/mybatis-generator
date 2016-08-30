@@ -13,6 +13,8 @@
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorUpdateModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServicePlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorControllerPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperJavaPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperXmlPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelCommentPlugin" />
         <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />-->

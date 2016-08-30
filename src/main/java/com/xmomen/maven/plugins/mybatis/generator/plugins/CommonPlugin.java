@@ -57,8 +57,8 @@ public class CommonPlugin extends PluginAdapter {
         map.put("modulePackage", templatePropertyDefine.getModulePackage());
         map.put("targetPackage", templatePropertyDefine.getTargetPackage());
         map.put("basePackage", templatePropertyDefine.getTargetPackage());
-        map.put("domainObjectName", templatePropertyDefine.getDomainObjectName());
-        map.put("DomainObjectName", PluginUtils.getUpperCaseString(templatePropertyDefine.getDomainObjectName()));
+        map.put("domainObjectName", PluginUtils.getLowerCaseString(templatePropertyDefine.getDomainObjectName()));
+        map.put("domainObjectClassName", PluginUtils.getUpperCaseString(templatePropertyDefine.getDomainObjectName()));
         map.put("tableComment", introspectedTable.getTableConfiguration().getProperty("tableComment"));
         List<Map> columnListMap = new ArrayList<>();
         Map<String, String> javaType = new HashMap<>();
