@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.Serializable;
 
-/**
- * Created by tanxinzheng on ${.now}.
- */
+<#include "header.ftl">
 @RestController
 public class ${domainObjectClassName}Controller {
 
@@ -32,7 +30,7 @@ public class ${domainObjectClassName}Controller {
      * @param   ids             主键数组
      * @param   excludeIds      不包含主键数组
      * @param   keyword         关键字
-     * @return  Page<${domainObjectClassName}>      ${tableComment}领域分页对象
+     * @return  Page<${domainObjectClassName}Model>      ${tableComment}领域分页对象
      */
     @RequestMapping(value = "/${requestMapping}", method = RequestMethod.GET)
     //@Log(actionName = "查询${tableComment}列表")
@@ -47,25 +45,25 @@ public class ${domainObjectClassName}Controller {
         query${domainObjectClassName}.setExcludeIds(excludeIds);
         query${domainObjectClassName}.setIds(ids);
         query${domainObjectClassName}.setKeyword(keyword);
-        return ${domainObjectName}Service.get${domainObjectClassName}Page(limit, offset, query${domainObjectClassName});
+        return ${domainObjectName}Service.get${domainObjectClassName}ModelPage(limit, offset, query${domainObjectClassName});
     }
 
     /**
      * 查询单个${tableComment}
      * @param   id      主键
-     * @return  ${domainObjectClassName}    ${tableComment}领域对象
+     * @return  ${domainObjectClassName}Model    ${tableComment}领域对象
      */
     @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.GET)
     //@Log(actionName = "查询${tableComment}")
     public ${domainObjectClassName}Model get${domainObjectClassName}ById(@PathVariable(value = "id") Serializable id){
-        return ${domainObjectName}Service.getOne${domainObjectClassName}(id);
+        return ${domainObjectName}Service.getOne${domainObjectClassName}Model(id);
     }
 
     /**
      * 新增${tableComment}
      * @param   create${domainObjectClassName}          新增对象参数
      * @param   bindingResult       参数校验结果
-     * @return  ${domainObjectClassName}                ${tableComment}领域对象
+     * @return  ${domainObjectClassName}Model                ${tableComment}领域对象
      */
     @RequestMapping(value = "/${requestMapping}", method = RequestMethod.POST)
     //@Log(actionName = "新增${tableComment}")

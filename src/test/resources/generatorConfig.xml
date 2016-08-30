@@ -12,20 +12,21 @@
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorCreateModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorUpdateModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServicePlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServiceImplPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorControllerPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperJavaPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperXmlPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelCommentPlugin" />
-        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />-->
-        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperSqlMapGeneratorPlugin" />-->
-        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.PrimaryKeyGeneratorPlugin" />-->
-        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperGeneratorPlugin">-->
-            <!--<property name="rootInterface" value="com.xmomen.framework.mybatis.mapper.MybatisMapper"/>-->
-        <!--</plugin>-->
-        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelExamplePlugin" >-->
-            <!--<property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisExample" />-->
-        <!--</plugin>-->
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperSqlMapGeneratorPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.PrimaryKeyGeneratorPlugin" />
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.MapperGeneratorPlugin">
+            <property name="rootInterface" value="com.xmomen.framework.mybatis.mapper.MybatisMapper"/>
+        </plugin>
+        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelExamplePlugin" >
+            <property name="rootClass" value="com.xmomen.framework.mybatis.model.BaseMybatisExample" />
+        </plugin>
 
         <commentGenerator>
             <property name="suppressAllComments" value="true" />

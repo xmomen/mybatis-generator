@@ -1,6 +1,8 @@
 package ${targetPackage};
 
 import lombok.Data;
+import ${modulePackage}.entity.${domainObjectClassName};
+import org.springframework.beans.BeanUtils;
 
 <#if columnImports?exists>
     <#list columnImports?keys as mykey>
@@ -9,9 +11,7 @@ import lombok.Data;
 </#if>
 import java.io.Serializable;
 
-/**
- * Created by tanxinzheng on ${.now}.
- */
+<#include "header.ftl">
 public @Data class Create${domainObjectClassName} implements Serializable {
 
 <#if columnList?exists>
@@ -20,4 +20,9 @@ public @Data class Create${domainObjectClassName} implements Serializable {
     </#list>
 </#if>
 
+    public ${domainObjectClassName} getEntity(){
+        ${domainObjectClassName} ${domainObjectName} = new ${domainObjectClassName}();
+        BeanUtils.copyProperties(this, ${domainObjectName});
+        return ${domainObjectName};
+    }
 }

@@ -9,9 +9,7 @@ import ${mykey};
 </#if>
 import java.io.Serializable;
 
-/**
- * Created by Jeng on ${.now}.
- */
+<#include "header.ftl">
 public @Data class ${domainObjectClassName}Model implements Serializable {
 
 <#if columnList?exists>

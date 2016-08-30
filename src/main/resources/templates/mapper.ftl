@@ -1,8 +1,6 @@
 package ${targetPackage};
 
-/**
- * Created by tanxinzheng on ${.now}.
- */
+<#include "header.ftl">
 public interface ${domainObjectClassName}MapperExt {
 
     public static final String ${domainObjectClassName}MapperNameSpace = "${targetPackage}.${domainObjectClassName}MapperExt.";
