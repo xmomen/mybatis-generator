@@ -36,9 +36,9 @@ public class ${domainObjectClassName}Controller {
     //@Log(actionName = "查询${tableComment}列表")
     public Page<${domainObjectClassName}Model> get${domainObjectClassName}List(@RequestParam(value = "limit") Integer limit,
                                   @RequestParam(value = "offset") Integer offset,
-                                  @RequestParam(value = "id", required = false) Serializable id,
-                                  @RequestParam(value = "ids", required = false) Serializable[] ids,
-                                  @RequestParam(value = "excludeIds", required = false) Serializable[] excludeIds,
+                                  @RequestParam(value = "id", required = false) String id,
+                                  @RequestParam(value = "ids", required = false) String[] ids,
+                                  @RequestParam(value = "excludeIds", required = false) String[] excludeIds,
                                   @RequestParam(value = "keyword", required = false) String keyword){
         Query${domainObjectClassName} query${domainObjectClassName} = new Query${domainObjectClassName}();
         query${domainObjectClassName}.setId(id);
@@ -55,7 +55,7 @@ public class ${domainObjectClassName}Controller {
      */
     @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.GET)
     //@Log(actionName = "查询${tableComment}")
-    public ${domainObjectClassName}Model get${domainObjectClassName}ById(@PathVariable(value = "id") Serializable id){
+    public ${domainObjectClassName}Model get${domainObjectClassName}ById(@PathVariable(value = "id") String id){
         return ${domainObjectName}Service.getOne${domainObjectClassName}Model(id);
     }
 
@@ -83,7 +83,7 @@ public class ${domainObjectClassName}Controller {
      */
     @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.PUT)
     //@Log(actionName = "更新${tableComment}")
-    public void update${domainObjectClassName}(@PathVariable(value = "id") Serializable id,
+    public void update${domainObjectClassName}(@PathVariable(value = "id") String id,
                            @RequestBody @Valid Update${domainObjectClassName} update${domainObjectClassName}, BindingResult bindingResult) throws ArgumentValidException {
         if(bindingResult != null && bindingResult.hasErrors()){
             throw new ArgumentValidException(bindingResult);
@@ -97,8 +97,8 @@ public class ${domainObjectClassName}Controller {
      */
     @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.DELETE)
     //@Log(actionName = "删除单个${tableComment}")
-    public void delete${domainObjectClassName}(@PathVariable(value = "id") Serializable id){
-        Serializable[] ids = {id};
+    public void delete${domainObjectClassName}(@PathVariable(value = "id") String id){
+        String[] ids = {id};
         ${domainObjectName}Service.delete${domainObjectClassName}(ids);
     }
 
@@ -108,7 +108,7 @@ public class ${domainObjectClassName}Controller {
      */
     @RequestMapping(value = "/${requestMapping}", method = RequestMethod.DELETE)
     //@Log(actionName = "批量删除${tableComment}")
-    public void delete${domainObjectClassName}s(@RequestParam(value = "ids") Serializable[] ids){
+    public void delete${domainObjectClassName}s(@RequestParam(value = "ids") String[] ids){
         ${domainObjectName}Service.delete${domainObjectClassName}(ids);
     }
 

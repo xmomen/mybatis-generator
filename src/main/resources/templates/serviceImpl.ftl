@@ -1,13 +1,13 @@
 package ${targetPackage};
 
-import com.xmomen.demo.entity.${domainObjectClassName};
-import com.xmomen.demo.entity.${domainObjectClassName}Example;
-import com.xmomen.demo.mapper.${domainObjectClassName}MapperExt;
-import com.xmomen.demo.model.Create${domainObjectClassName};
-import com.xmomen.demo.model.Query${domainObjectClassName};
-import com.xmomen.demo.model.Update${domainObjectClassName};
-import com.xmomen.demo.model.${domainObjectClassName}Model;
-import com.xmomen.demo.service.${domainObjectClassName}Service;
+import ${modulePackage}.entity.${domainObjectClassName};
+import ${modulePackage}.entity.${domainObjectClassName}Example;
+import ${modulePackage}.mapper.${domainObjectClassName}MapperExt;
+import ${modulePackage}.model.Create${domainObjectClassName};
+import ${modulePackage}.model.Query${domainObjectClassName};
+import ${modulePackage}.model.Update${domainObjectClassName};
+import ${modulePackage}.model.${domainObjectClassName}Model;
+import ${modulePackage}.service.${domainObjectClassName}Service;
 import com.xmomen.framework.mybatis.dao.MybatisDao;
 import com.xmomen.framework.mybatis.page.Page;
 import org.apache.ibatis.exceptions.TooManyResultsException;
@@ -84,9 +84,9 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
      */
     @Override
     @Transactional
-    public void delete${domainObjectClassName}(Serializable[] ids) {
+    public void delete${domainObjectClassName}(String[] ids) {
         ${domainObjectClassName}Example ${domainObjectName}Example = new ${domainObjectClassName}Example();
-        ${domainObjectName}Example.createCriteria().andIdIn(Arrays.<Integer>asList((Integer[]) ids));
+        ${domainObjectName}Example.createCriteria().andIdIn(Arrays.<String>asList((String[]) ids));
         mybatisDao.deleteByExample(${domainObjectName}Example);
     }
 
@@ -143,7 +143,7 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
      * @return ${domainObjectClassName} ${tableComment}实体对象
      */
     @Override
-    public ${domainObjectClassName} getOne${domainObjectClassName}(Serializable id) {
+    public ${domainObjectClassName} getOne${domainObjectClassName}(String id) {
         return mybatisDao.selectByPrimaryKey(${domainObjectClassName}.class, id);
     }
 
@@ -154,7 +154,7 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
      * @return ${domainObjectClassName}Model ${tableComment}领域对象
      */
     @Override
-    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(Serializable id) {
+    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(String id) {
         Query${domainObjectClassName} query${domainObjectClassName} = new Query${domainObjectClassName}();
         query${domainObjectClassName}.setId(id);
         return mybatisDao.getSqlSessionTemplate().selectOne(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", query${domainObjectClassName});

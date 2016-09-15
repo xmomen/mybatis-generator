@@ -54,6 +54,7 @@ public class CommonPlugin extends PluginAdapter {
         if(map == null){
             map = new HashMap();
         }
+        map.put("tableName", templatePropertyDefine.getTableName());
         map.put("modulePackage", templatePropertyDefine.getModulePackage());
         map.put("targetPackage", templatePropertyDefine.getTargetPackage());
         map.put("basePackage", templatePropertyDefine.getTargetPackage());

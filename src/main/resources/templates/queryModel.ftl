@@ -8,8 +8,8 @@ import java.io.Serializable;
 public @Data class Query${domainObjectClassName} implements Serializable {
 
     private String keyword;
-    private Serializable id;
-    private Serializable[] ids;
-    private Serializable[] excludeIds;
+    private String id;
+    private String[] ids;
+    private String[] excludeIds;
 
 }

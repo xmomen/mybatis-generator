@@ -3,13 +3,13 @@
 <mapper namespace="${targetPackage}.${domainObjectClassName}MapperExt" >
 
     <!--    查询消息    -->
-    <select id="get${domainObjectClassName}"
+    <select id="get${domainObjectClassName}Model"
             resultType="${modulePackage}.model.${domainObjectClassName}Model"
             parameterType="${modulePackage}.model.Query${domainObjectClassName}">
         SELECT * FROM ${tableName} t
         <where>
             <if test="keyword">
-                AND t.id LIKE CONCAT('%', ${r"#{keyword}"}, '%')
+                AND t.ID LIKE CONCAT('%', ${r"#{keyword}"}, '%')
             </if>
             <if test="id">
                 AND t.ID = ${r"#{id}"}

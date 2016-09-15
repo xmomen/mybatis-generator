@@ -45,7 +45,7 @@ public interface ${domainObjectClassName}Service {
      * 删除${tableComment}
      * @param ids   主键数组
      */
-    public void delete${domainObjectClassName}(Serializable[] ids);
+    public void delete${domainObjectClassName}(String[] ids);
 
     /**
      * 查询${tableComment}领域分页对象（带参数条件）
@@ -82,14 +82,14 @@ public interface ${domainObjectClassName}Service {
      * @param id 主键
      * @return ${domainObjectClassName} ${tableComment}实体对象
      */
-    public ${domainObjectClassName} getOne${domainObjectClassName}(Serializable id);
+    public ${domainObjectClassName} getOne${domainObjectClassName}(String id);
 
     /**
      * 根据主键查询单个对象
      * @param id 主键
      * @return ${domainObjectClassName}Model ${tableComment}领域对象
      */
-    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(Serializable id);
+    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(String id);
 
     /**
      * 根据查询参数查询单个对象（此方法只用于提供精确查询单个对象，若结果数超过1，则会报错）
