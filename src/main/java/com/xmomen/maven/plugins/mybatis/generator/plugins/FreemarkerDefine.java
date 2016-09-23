@@ -12,6 +12,7 @@ public class FreemarkerDefine {
     public static String MAPPER_TEMPLATE= "mapper" + PREFIX;
     public static String MAPPER_XML_TEMPLATE= "mapper-xml" + PREFIX;
     public static String MODEL_TEMPLATE= "model" + PREFIX;
+    public static String JS_NG_MODULE_TEMPLATE= "js-module" + PREFIX;
     public static String CREATE_MODEL_TEMPLATE= "createModel" + PREFIX;
     public static String QUERY_MODEL_TEMPLATE= "queryModel" + PREFIX;
     public static String UPDATE_MODEL_TEMPLATE= "updateModel" + PREFIX;

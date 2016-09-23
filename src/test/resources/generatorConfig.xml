@@ -6,16 +6,18 @@
              targetRuntime="com.xmomen.maven.plugins.mybatis.generator.context.IntrospectedTableMyBatis3ImplExt">
 
 
-        <property name="modulePackage" value="com.xmomen.demo" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.CommonPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorQueryModelPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorCreateModelPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorUpdateModelPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServicePlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServiceImplPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorControllerPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperJavaPlugin" />
-        <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperXmlPlugin" />
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.CommonPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.AbstractGeneratorPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorQueryModelPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorCreateModelPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorUpdateModelPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServicePlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorServiceImplPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorControllerPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperJavaPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorMapperXmlPlugin" />-->
+        <!--<plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorJsNgModulePlugin" />-->
+
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.GeneratorModelPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelCommentPlugin" />
         <plugin type="com.xmomen.maven.plugins.mybatis.generator.plugins.ModelAnnotationPlugin" />
@@ -51,7 +53,11 @@
         </javaClientGenerator>
         <table tableName="sys_users" domainObjectName="User">
             <property name="tableComment" value="用户" />
-            <property name="requestMapping" value="user" />
+            <property name="modulePackage" value="com.xmomen.demo" />
+            <property name="moduleName" value="demo" />
+            <property name="webappRootDir" value="./src/main/webapp/momen-website" />
+            <property name="webappModuleRootDir" value="modules" />
+            <generatedKey column="id" sqlStatement="SELECT replace(UUID(),'-','')" />
         </table>
 
     </context>

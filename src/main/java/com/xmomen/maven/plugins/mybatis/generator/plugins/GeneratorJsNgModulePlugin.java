@@ -10,52 +10,47 @@
 //import java.util.logging.Logger;
 //
 ///**
-// * controller类代码自动生成插件
-// * Created by tanxinzheng on 16/8/27.
+// * Created by tanxinzheng on 16/8/28.
 // */
-//public class GeneratorMapperJavaPlugin extends CommonPlugin {
-//
+//public class GeneratorJsNgModulePlugin extends CommonPlugin {
 //    private static Logger logger = Logger.getLogger(GeneratorQueryModelPlugin.class.getName());
 //    // 模板文件（包含路径）
 //    private String templateFile;
-//    // 目标包名
-//    private String targetPackage;
+//    private String targetWebModule;
 //
 //    @Override
-//    public boolean validate(List<String> list) {
+//    public boolean validate(List<String> warnings) {
 //        return true;
 //    }
 //
 //    private void validateProperty(){
 //        modulePackage = getModulePackage();
-//        if(targetPackage == null && modulePackage == null){
-//            throw new IllegalArgumentException(MessageFormat.format("The targetPackage property of the {0} must be not null", getClass().getSimpleName()));
+//        if(targetWebModule == null){
+//            throw new IllegalArgumentException(MessageFormat.format("The targetWebModule property of the {0} must be not null", getClass().getSimpleName()));
 //        }
 //    }
 //
 //    private void setProperty(){
 //        templateFile = this.getProperties().getProperty("templateFile");
-//        targetPackage = this.getProperties().getProperty("targetPackage");
+//        targetWebModule = this.context.getProperties().getProperty("targetWebModule");
 //    }
 //
-//    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
-//        logger.info(MessageFormat.format("Generating Mapper class for {0}", introspectedTable.getTableConfiguration().getTableName()));
+//
+//    public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(
+//            IntrospectedTable introspectedTable) {
+//        logger.info(MessageFormat.format("Generating angular module js file for {0}", introspectedTable.getTableConfiguration().getTableName()));
 //        setProperty();
 //        validateProperty();
-//        if(modulePackage != null && targetPackage == null){
-//            targetPackage = modulePackage + ".mapper";
-//        }
 //        TemplatePropertyDefine templatePropertyDefine = new TemplatePropertyDefine(
-//                "{0}MapperExt.java",
-//                targetPackage,
-//                FreemarkerDefine.MAPPER_TEMPLATE);
+//                "{0}_module.js",
+//                targetWebModule,
+//                FreemarkerDefine.JS_NG_MODULE_TEMPLATE);
 //        if(templateFile != null){
 //            templatePropertyDefine.setTemplateFileName(templateFile);
 //        }
 //        Map map = new HashMap();
+//        map.put("targetWebModule", targetWebModule);
 //        commonGenerator(introspectedTable, templatePropertyDefine, map);
 //        return null;
 //    }
-//
-//
 //}
