@@ -1,5 +1,6 @@
 package com.xmomen;
 
+import org.junit.Test;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -18,7 +19,8 @@ import java.util.List;
  */
 public class GeneratorMainTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() throws Exception {
         String path = "generatorConfig.xml";
         try {
             List<String> warnings = new ArrayList<String>();

@@ -4,19 +4,19 @@ import lombok.Data;
 import ${modulePackage}.entity.${domainObjectClassName};
 import org.springframework.beans.BeanUtils;
 
-<#if columnImports?exists>
-    <#list columnImports?keys as mykey>
+<#if importClassList?exists>
+    <#list importClassList?keys as mykey>
     import ${mykey};
     </#list>
 </#if>
 import java.io.Serializable;
 
 <#include "header.ftl">
-public @Data class Create${domainObjectClassName} implements Serializable {
+public @Data class ${domainObjectClassName}Create implements Serializable {
 
-<#if columnList?exists>
-    <#list columnList as column>
-    private ${column['shortName']} ${column['javaProperty']};
+<#if fieldList?exists>
+    <#list fieldList as field>
+    private ${field['fieldName']} ${field['javaProperty']};
     </#list>
 </#if>
 

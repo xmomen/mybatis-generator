@@ -3,8 +3,8 @@
 <#include "header.ftl">
 define([
     "angularAMD",
-    "${targetWebModule}/${domainObjectName}_api",
-    "${targetWebModule}/${domainObjectName}"
+    "${moduleName}/${domainObjectName}_api",
+    "${moduleName}/${domainObjectName}"
 ],function(angularAMD, ${domainObjectClassName}Rest, ${domainObjectName}){
     angular.module('${domainObjectName}.module',[
         "${domainObjectClassName}.REST"
@@ -20,8 +20,8 @@ define([
                 views: {
                     '${domainObjectName}': angularAMD.route({
                         controller: ${domainObjectName},
-                        //controllerUrl: "${targetWebModule}/${domainObjectName}.js",
-                        templateUrl: '${targetWebModule}/${domainObjectName}.html'
+                        //controllerUrl: "${moduleName}/${domainObjectName}.js",
+                        templateUrl: '${moduleName}/${domainObjectName}.html'
                     })
                 }
             });

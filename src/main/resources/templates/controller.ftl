@@ -3,9 +3,9 @@ package ${targetPackage};
 import com.xmomen.framework.mybatis.page.Page;
 import com.xmomen.framework.web.exceptions.ArgumentValidException;
 //import com.xmomen.module.logger.Log;
-import ${modulePackage}.model.Create${domainObjectClassName};
-import ${modulePackage}.model.Query${domainObjectClassName};
-import ${modulePackage}.model.Update${domainObjectClassName};
+import ${modulePackage}.model.${domainObjectClassName}Create;
+import ${modulePackage}.model.${domainObjectClassName}Query;
+import ${modulePackage}.model.${domainObjectClassName}Update;
 import ${modulePackage}.model.${domainObjectClassName}Model;
 import ${modulePackage}.service.${domainObjectClassName}Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class ${domainObjectClassName}Controller {
      * @param   keyword         关键字
      * @return  Page<${domainObjectClassName}Model>      ${tableComment}领域分页对象
      */
-    @RequestMapping(value = "/${requestMapping}", method = RequestMethod.GET)
+    @RequestMapping(value = "/${restMapping}", method = RequestMethod.GET)
     //@Log(actionName = "查询${tableComment}列表")
     public Page<${domainObjectClassName}Model> get${domainObjectClassName}List(@RequestParam(value = "limit") Integer limit,
                                   @RequestParam(value = "offset") Integer offset,
@@ -40,12 +40,12 @@ public class ${domainObjectClassName}Controller {
                                   @RequestParam(value = "ids", required = false) String[] ids,
                                   @RequestParam(value = "excludeIds", required = false) String[] excludeIds,
                                   @RequestParam(value = "keyword", required = false) String keyword){
-        Query${domainObjectClassName} query${domainObjectClassName} = new Query${domainObjectClassName}();
-        query${domainObjectClassName}.setId(id);
-        query${domainObjectClassName}.setExcludeIds(excludeIds);
-        query${domainObjectClassName}.setIds(ids);
-        query${domainObjectClassName}.setKeyword(keyword);
-        return ${domainObjectName}Service.get${domainObjectClassName}ModelPage(limit, offset, query${domainObjectClassName});
+        ${domainObjectClassName}Query ${domainObjectName}Query = new ${domainObjectClassName}Query();
+        ${domainObjectName}Query.setId(id);
+        ${domainObjectName}Query.setExcludeIds(excludeIds);
+        ${domainObjectName}Query.setIds(ids);
+        ${domainObjectName}Query.setKeyword(keyword);
+        return ${domainObjectName}Service.get${domainObjectClassName}ModelPage(limit, offset, ${domainObjectName}Query);
     }
 
     /**
@@ -53,7 +53,7 @@ public class ${domainObjectClassName}Controller {
      * @param   id      主键
      * @return  ${domainObjectClassName}Model    ${tableComment}领域对象
      */
-    @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/${restMapping}/{id}", method = RequestMethod.GET)
     //@Log(actionName = "查询${tableComment}")
     public ${domainObjectClassName}Model get${domainObjectClassName}ById(@PathVariable(value = "id") String id){
         return ${domainObjectName}Service.getOne${domainObjectClassName}Model(id);
@@ -65,13 +65,13 @@ public class ${domainObjectClassName}Controller {
      * @param   bindingResult       参数校验结果
      * @return  ${domainObjectClassName}Model                ${tableComment}领域对象
      */
-    @RequestMapping(value = "/${requestMapping}", method = RequestMethod.POST)
+    @RequestMapping(value = "/${restMapping}", method = RequestMethod.POST)
     //@Log(actionName = "新增${tableComment}")
-    public ${domainObjectClassName}Model create${domainObjectClassName}(@RequestBody @Valid Create${domainObjectClassName} create${domainObjectClassName}, BindingResult bindingResult) throws ArgumentValidException {
+    public ${domainObjectClassName}Model create${domainObjectClassName}(@RequestBody @Valid ${domainObjectClassName}Create ${domainObjectName}Create, BindingResult bindingResult) throws ArgumentValidException {
         if(bindingResult != null && bindingResult.hasErrors()){
             throw new ArgumentValidException(bindingResult);
         }
-        return ${domainObjectName}Service.create${domainObjectClassName}(create${domainObjectClassName});
+        return ${domainObjectName}Service.create${domainObjectClassName}(${domainObjectName}Create);
     }
 
     /**
@@ -81,21 +81,21 @@ public class ${domainObjectClassName}Controller {
      * @param bindingResult                 参数校验结果
      * @throws ArgumentValidException       参数校验异常类
      */
-    @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/${restMapping}/{id}", method = RequestMethod.PUT)
     //@Log(actionName = "更新${tableComment}")
     public void update${domainObjectClassName}(@PathVariable(value = "id") String id,
-                           @RequestBody @Valid Update${domainObjectClassName} update${domainObjectClassName}, BindingResult bindingResult) throws ArgumentValidException {
+                           @RequestBody @Valid ${domainObjectClassName}Update ${domainObjectName}Update, BindingResult bindingResult) throws ArgumentValidException {
         if(bindingResult != null && bindingResult.hasErrors()){
             throw new ArgumentValidException(bindingResult);
         }
-        ${domainObjectName}Service.update${domainObjectClassName}(update${domainObjectClassName});
+        ${domainObjectName}Service.update${domainObjectClassName}(${domainObjectName}Update);
     }
 
     /**
      *  删除${tableComment}
      * @param id    主键
      */
-    @RequestMapping(value = "/${requestMapping}/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/${restMapping}/{id}", method = RequestMethod.DELETE)
     //@Log(actionName = "删除单个${tableComment}")
     public void delete${domainObjectClassName}(@PathVariable(value = "id") String id){
         String[] ids = {id};
@@ -106,7 +106,7 @@ public class ${domainObjectClassName}Controller {
      *  删除${tableComment}
      * @param ids    主键
      */
-    @RequestMapping(value = "/${requestMapping}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/${restMapping}", method = RequestMethod.DELETE)
     //@Log(actionName = "批量删除${tableComment}")
     public void delete${domainObjectClassName}s(@RequestParam(value = "ids") String[] ids){
         ${domainObjectName}Service.delete${domainObjectClassName}(ids);

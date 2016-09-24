@@ -5,7 +5,7 @@
     <!--    查询消息    -->
     <select id="get${domainObjectClassName}Model"
             resultType="${modulePackage}.model.${domainObjectClassName}Model"
-            parameterType="${modulePackage}.model.Query${domainObjectClassName}">
+            parameterType="${modulePackage}.model.${domainObjectClassName}Query">
         SELECT * FROM ${tableName} t
         <where>
             <if test="keyword">

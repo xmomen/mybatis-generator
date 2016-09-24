@@ -18,7 +18,7 @@ public @Data class TemplatePropertyDefine {
     // 业务领域对象名称
     private String domainObjectName;
     /** 领域对象类 */
-    private String domainObjectClass;
+    private String domainObjectClassName;
     // 模板文件路径
     private String templateFilePath;
     // 模板文件名
@@ -33,17 +33,32 @@ public @Data class TemplatePropertyDefine {
     private String targetPackage;
     // 模块包名
     private String modulePackage;
-    // 静态资源根目录
-    private String webappRootDir;
-    // 静态资源业务模块根目录
-    private String webappModuleRootDir;
+    // restful 资源映射名称
+    private String restMapping;
+    // 是否是静态资源模板
+    private boolean isWebTemplate;
+    // 静态资源web目录
+    private String targetWebDir;
+    // 静态资源模块目录
+    private String targetWebModuleDir;
+    // 静态资源目标目录（可选）
+    private String targetWebJsDir;
+    // 静态资源目标目录（可选）
+    private String targetWebHtmlDir;
     // 字段集合
     private List<FieldDefine> fieldList;
+    // 导入的class
+    private Map<String, String> importClassList;
 
     public @Data class FieldDefine {
         private String javaProperty;
+        private String javaType;
         private String fieldName;
         private String fieldComment;
         private boolean isPrimaryKey;
+        private int maxLength;
+        private boolean isNullable;
+        private boolean isHide;
+
     }
 }

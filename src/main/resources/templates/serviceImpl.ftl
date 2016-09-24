@@ -3,9 +3,9 @@ package ${targetPackage};
 import ${modulePackage}.entity.${domainObjectClassName};
 import ${modulePackage}.entity.${domainObjectClassName}Example;
 import ${modulePackage}.mapper.${domainObjectClassName}MapperExt;
-import ${modulePackage}.model.Create${domainObjectClassName};
-import ${modulePackage}.model.Query${domainObjectClassName};
-import ${modulePackage}.model.Update${domainObjectClassName};
+import ${modulePackage}.model.${domainObjectClassName}Create;
+import ${modulePackage}.model.${domainObjectClassName}Query;
+import ${modulePackage}.model.${domainObjectClassName}Update;
 import ${modulePackage}.model.${domainObjectClassName}Model;
 import ${modulePackage}.service.${domainObjectClassName}Service;
 import com.xmomen.framework.mybatis.dao.MybatisDao;
@@ -29,13 +29,13 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
     /**
      * 新增${tableComment}
      *
-     * @param create${domainObjectClassName} 新增${tableComment}对象参数
+     * @param ${domainObjectName}Create 新增${tableComment}对象参数
      * @return ${domainObjectClassName}Model    ${tableComment}领域对象
      */
     @Override
     @Transactional
-    public ${domainObjectClassName}Model create${domainObjectClassName}(Create${domainObjectClassName} create${domainObjectClassName}) {
-        ${domainObjectClassName} ${domainObjectName} = create${domainObjectClassName}(create${domainObjectClassName}.getEntity());
+    public ${domainObjectClassName}Model create${domainObjectClassName}(${domainObjectClassName}Create ${domainObjectName}Create) {
+        ${domainObjectClassName} ${domainObjectName} = create${domainObjectClassName}(${domainObjectName}Create.getEntity());
         if(${domainObjectName} != null){
             return getOne${domainObjectClassName}Model(${domainObjectName}.getId());
         }
@@ -57,12 +57,12 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
     /**
      * 更新${tableComment}
      *
-     * @param update${domainObjectClassName} 更新${tableComment}对象参数
+     * @param ${domainObjectName}Update 更新${tableComment}对象参数
      */
     @Override
     @Transactional
-    public void update${domainObjectClassName}(Update${domainObjectClassName} update${domainObjectClassName}) {
-        mybatisDao.update(update${domainObjectClassName}.getEntity());
+    public void update${domainObjectClassName}(${domainObjectClassName}Update ${domainObjectName}Update) {
+        mybatisDao.update(${domainObjectName}Update.getEntity());
     }
 
     /**
@@ -95,12 +95,12 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
      *
      * @param limit     每页最大数
      * @param offset    页码
-     * @param query${domainObjectClassName} 查询参数
+     * @param ${domainObjectName}Query 查询参数
      * @return Page<${domainObjectClassName}Model>   ${tableComment}参数对象
      */
     @Override
-    public Page<${domainObjectClassName}Model> get${domainObjectClassName}ModelPage(int limit, int offset, Query${domainObjectClassName} query${domainObjectClassName}) {
-        return (Page<${domainObjectClassName}Model>) mybatisDao.selectPage(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", query${domainObjectClassName}, limit, offset);
+    public Page<${domainObjectClassName}Model> get${domainObjectClassName}ModelPage(int limit, int offset, ${domainObjectClassName}Query ${domainObjectName}Query) {
+        return (Page<${domainObjectClassName}Model>) mybatisDao.selectPage(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", ${domainObjectName}Query, limit, offset);
     }
 
     /**
@@ -118,12 +118,12 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
     /**
      * 查询${tableComment}领域集合对象（带参数条件）
      *
-     * @param query${domainObjectClassName} 查询参数对象
+     * @param ${domainObjectName}Query 查询参数对象
      * @return List<${domainObjectClassName}Model> ${tableComment}领域集合对象
      */
     @Override
-    public List<${domainObjectClassName}Model> get${domainObjectClassName}ModelList(Query${domainObjectClassName} query${domainObjectClassName}) {
-        return mybatisDao.getSqlSessionTemplate().selectList(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", query${domainObjectClassName});
+    public List<${domainObjectClassName}Model> get${domainObjectClassName}ModelList(${domainObjectClassName}Query ${domainObjectName}Query) {
+        return mybatisDao.getSqlSessionTemplate().selectList(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", ${domainObjectName}Query);
     }
 
     /**
@@ -155,19 +155,19 @@ public class ${domainObjectClassName}ServiceImpl implements ${domainObjectClassN
      */
     @Override
     public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(String id) {
-        Query${domainObjectClassName} query${domainObjectClassName} = new Query${domainObjectClassName}();
-        query${domainObjectClassName}.setId(id);
-        return mybatisDao.getSqlSessionTemplate().selectOne(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", query${domainObjectClassName});
+        ${domainObjectClassName}Query ${domainObjectName}Query = new ${domainObjectClassName}Query();
+        ${domainObjectName}Query.setId(id);
+        return mybatisDao.getSqlSessionTemplate().selectOne(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", ${domainObjectName}Query);
     }
 
     /**
      * 根据查询参数查询单个对象（此方法只用于提供精确查询单个对象，若结果数超过1，则会报错）
      *
-     * @param query${domainObjectClassName} ${tableComment}查询参数对象
+     * @param ${domainObjectName}Query ${tableComment}查询参数对象
      * @return ${domainObjectClassName}Model ${tableComment}领域对象
      */
     @Override
-    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(Query${domainObjectClassName} query${domainObjectClassName}) throws TooManyResultsException {
-        return mybatisDao.getSqlSessionTemplate().selectOne(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", query${domainObjectClassName});
+    public ${domainObjectClassName}Model getOne${domainObjectClassName}Model(${domainObjectClassName}Query ${domainObjectName}Query) throws TooManyResultsException {
+        return mybatisDao.getSqlSessionTemplate().selectOne(${domainObjectClassName}MapperExt.${domainObjectClassName}MapperNameSpace + "get${domainObjectClassName}Model", ${domainObjectName}Query);
     }
 }
