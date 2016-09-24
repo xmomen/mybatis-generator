@@ -19,8 +19,7 @@ import java.util.List;
  */
 public class GeneratorMainTest {
 
-    @Test
-    public void test() throws Exception {
+    public static void main(String[] args) {
         String path = "generatorConfig.xml";
         try {
             List<String> warnings = new ArrayList<String>();
