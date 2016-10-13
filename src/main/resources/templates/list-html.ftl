@@ -43,7 +43,9 @@
               </th>
             <#if fieldList?exists>
               <#list fieldList as field>
+              <#if !field.primaryKey>
               <th>${field['fieldComment']}</th>
+              </#if>
               </#list>
             </#if>
               <th class="action">操作</th>

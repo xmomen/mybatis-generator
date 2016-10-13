@@ -3,8 +3,8 @@
 <#include "header.ftl">
 define([
     "angularAMD",
-    "${moduleName}/${domainObjectName}_api",
-    "${moduleName}/${domainObjectName}"
+    "./${domainObjectName}_api",
+    "./${domainObjectName}"
 ],function(angularAMD, ${domainObjectClassName}Rest, ${domainObjectName}){
     angular.module('${domainObjectName}.module',[
         "${domainObjectClassName}.REST"
@@ -16,14 +16,15 @@ define([
             states.push({
                 title: "${tableComment}",
                 name: 'app.${domainObjectName}',
-                url: '/${moduleName}/${domainObjectName}',
+                url: '/${restMapping}',
                 views: {
                     '${domainObjectName}': angularAMD.route({
                         controller: ${domainObjectName},
                         //controllerUrl: "${moduleName}/${domainObjectName}.js",
-                        templateUrl: '${moduleName}/${domainObjectName}.html'
+                        templateUrl: 'modules/${moduleName}/${domainObjectName}.html'
                     })
-                }
+                },
+                sticky: true
             });
 
             angular.forEach(states, function(state){
